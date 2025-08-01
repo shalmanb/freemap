@@ -5,7 +5,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- Leaflet.js CSS from a CDN -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/>
@@ -25,26 +24,22 @@
 </head>
 <body>
 
-<!-- The div element where the map will be rendered -->
 <div id="map"></div>
 
-<!-- Leaflet.js JavaScript from a CDN -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
      crossorigin=""></script>
 
 <script>
-    // Initialize the map and set its view to a wider area initially
-    // The user can then zoom into Dhamoirhat
-    const map = L.map('map').setView([25.13, 88.85], 5); // Initial zoom level set to 5
+    // Initialize the map and set its view
+    const map = L.map('map').setView([25.13, 88.85], 12); // Centered view
 
-    // Add the tile layer to the map
-    // This points to your local folder where the tiles are stored
-    L.tileLayer('dhamoirhat_tiles/{z}/{x}/{y}.png', {
-        maxZoom: 18, // The maximum zoom level of your tiles
-        minZoom: 0,  // The minimum zoom level allowed
+    // Add the tile layer to the map, pointing to the local folder
+    L.tileLayer('dhamoirhat_tiles/{z}/{x}/{y}.jpg', {
+        maxZoom: 18,
+        minZoom: 0,
         attribution: 'Map data &copy; OpenStreetMap contributors',
-        tms: false // Set to false because gdal2tiles default output is XYZ
+        tms: false // Set to false because our script output is XYZ
     }).addTo(map);
 
 </script>
